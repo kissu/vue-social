@@ -1,6 +1,8 @@
 <template>
   <div class="layout">
-    <social-chat icon :attendants="attendants">
+    <nuxt />
+    <!-- important to have the rest of the page  -->
+    <social-chat id="social-button" icon :attendants="attendants">
       <p slot="header">
         Click on one of our attendants below to chat on WhatsApp.
       </p>
@@ -17,7 +19,13 @@
 </template>
 
 <script>
+import { SocialChat } from 'vue-social-chat'
+
 export default {
+  name: 'DefaultLayout',
+  components: {
+    SocialChat,
+  },
   data() {
     return {
       attendants: [
@@ -36,3 +44,17 @@ export default {
   },
 }
 </script>
+
+<style>
+:root #social-button {
+  --vsc-bg-header: orange;
+  --vsc-bg-footer: #fafafa;
+  --vsc-text-color-header: yellow;
+  --vsc-text-color-footer: green;
+  --vsc-bg-button: pink;
+  --vsc-text-color-button: purple;
+  --vsc-outline-color: #333;
+  --vsc-border-color-bottom-header: teal;
+  --vsc-border-color-top-footer: #f3f3f3;
+}
+</style>
